@@ -7,6 +7,11 @@ add_library(
 	Source/Window.cpp
 )
 
+target_link_libraries(
+	${PROJECT_NAME}
+	glfw
+)
+
 target_include_directories(
 	${PROJECT_NAME}
 	PUBLIC
