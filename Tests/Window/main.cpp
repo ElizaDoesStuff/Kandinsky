@@ -3,7 +3,9 @@
 
 int main() {
 
-	log("Hello, Kandinsky!!");
+	log( "Running test 'KSKY_TEST_Window'..." );
+
+	KSKY::Window window;
 
 	return 0;
 
