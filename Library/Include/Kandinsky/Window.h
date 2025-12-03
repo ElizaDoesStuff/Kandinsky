@@ -11,7 +11,7 @@ namespace KSKY {
 
 	class Window {
 
-		enum Events {
+		enum class Event {
 			WindowResize,
 			WindowMove,
 
@@ -27,7 +27,7 @@ namespace KSKY {
 
 			MouseDown,
 			MouseUp,
-			MouseMove,
+			MouseMove
 		};
 
 		public:
@@ -50,7 +50,7 @@ namespace KSKY {
 			bool focused();
 
 			template<typename T>
-			void on( unsigned int, std::function<void(T)> );
+			void on( Event, std::function<void(T)> );
 
 		private:
 
