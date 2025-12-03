@@ -5,10 +5,15 @@ int main() {
 
 	log( "Running test 'KSKY_TEST_Window'..." );
 
-	KSKY::Window window;
-	// window.title( "Kandinsky Window Test" );
-	// window.maximized( true );
-	
+	KSKY::Window Window;
+	// Window.title( "Kandinsky Window Test" );
+	// Window.maximized( true );
+
+	// while ( !Window.flags.exit ) {
+		// Window.clear();
+		// Window.draw();
+	// }
+
 	return 0;
 
 }

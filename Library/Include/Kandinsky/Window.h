@@ -34,6 +34,9 @@ namespace KSKY {
 
 			Window() = default;
 
+			void draw();
+			void clear();
+
 			void title( std::string );
 			std::string title();
 
@@ -59,7 +62,6 @@ namespace KSKY {
 			struct {
 				bool exit;
 				bool error;
-				bool running;
 				bool minimized;
 			} flags;
 			
