@@ -12,22 +12,22 @@ namespace KSKY {
 	class Window {
 
 		enum Events {
-			WindowResize
-			WindowMove
-			
-			WindowFocus
-			WindowUnfocus
+			WindowResize,
+			WindowMove,
 
-			WindowMinimize
-			WindowMaximize
+			WindowFocus,
+			WindowUnfocus,
 
-			KeyDown
-			KeyUp
-			KeyRepeat
+			WindowMinimize,
+			WindowMaximize,
 
-			MouseDown
-			MouseUp
-			MouseMove
+			KeyDown,
+			KeyUp,
+			KeyRepeat,
+
+			MouseDown,
+			MouseUp,
+			MouseMove,
 		};
 
 		public:
