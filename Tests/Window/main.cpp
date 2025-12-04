@@ -7,7 +7,8 @@ int main() {
 
 	KSKY::Window Window = KSKY::Window();
 	// Window.title( "Kandinsky Window Test" );
-	// Window.maximized( true );
+	// Window.size( 200, 200 );
+	Window.maximized( true );
 
 	while ( !Window.flags.exit ) {
 		Window.clear();

@@ -2,7 +2,9 @@
 #include <bitset>
 #include <functional>
 
+#include "glad/gl.h"
 #include "GLFW/glfw3.h"
+#include "Prettiest/prettiest.h"
 
 namespace KSKY {
 
