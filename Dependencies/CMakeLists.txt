@@ -7,3 +7,4 @@ option( GLFW_BUILD_DOCS OFF )
 
 add_subdirectory( Prettiest )
 add_subdirectory( GLFW )
+add_subdirectory( glad )
