@@ -27,15 +27,16 @@ namespace KSKY {
 
 			MouseDown,
 			MouseUp,
-			MouseMove
+			MouseMove,
 		};
 
 		public:
 
-			Window() = default;
+			Window();
 
 			void draw();
 			void clear();
+			void exit();
 
 			void title( std::string );
 			std::string title();
@@ -55,15 +56,15 @@ namespace KSKY {
 			template<typename T>
 			void on( Event, std::function<void(T)> );
 
-		private:
-
-			GLFWwindow* ptr;
-
 			struct {
 				bool exit;
 				bool error;
 				bool minimized;
 			} flags;
+
+		private:
+
+			GLFWwindow* ptr;
 			
 	};
 
