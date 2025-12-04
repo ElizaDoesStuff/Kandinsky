@@ -13,28 +13,10 @@ namespace KSKY {
 
 	class Window {
 
-		enum class Event {
-			WindowResize,
-			WindowMove,
-
-			WindowFocus,
-			WindowUnfocus,
-
-			WindowMinimize,
-			WindowMaximize,
-
-			KeyDown,
-			KeyUp,
-			KeyRepeat,
-
-			MouseDown,
-			MouseUp,
-			MouseMove,
-		};
-
 		public:
 
 			Window();
+			~Window();
 
 			void draw();
 			void clear();
@@ -52,16 +34,17 @@ namespace KSKY {
 			void maximized( bool );
 			bool maximized();
 
+			void minimized( bool );
+			bool minimized();
+
+			void restore();
+
 			void focused( bool );
 			bool focused();
-
-			template<typename T>
-			void on( Event, std::function<void(T)> );
 
 			struct {
 				bool exit;
 				bool error;
-				bool minimized;
 			} flags;
 
 		private:
