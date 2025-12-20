@@ -1,0 +1,6 @@
+[submodule "Dependencies/Prettiest"]
+	path = Dependencies/Prettiest
+	url = https://github.com/ElizaDoesStuff/Prettiest
+[submodule "Dependencies/glfw"]
+	path = Dependencies/glfw
+	url = https://github.com/glfw/glfw
