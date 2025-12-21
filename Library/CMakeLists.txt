@@ -10,5 +10,5 @@ add_library(
 target_include_directories(
 	${PROJECT_NAME}
 	PUBLIC
-	Include/ksky
+	${PROJECT_SOURCE_DIR}/Include
 )
