@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+KSKY_LAUNCH_DEBUGGER=false
+KSKY_TEST_QUEUE=
+
+while [ ! $1 = "--" ]; do
+	case $1 in
+		-d | --debug) KSKY_LAUNCH_DEBUGGER=true;;
+		*) echo "[ERROR]: Unexpected argument '$1'" >&2
+	esac
+	shift
+done
+shift
+
+while [ ! $1 = "" ]; do
+	KSKY_TEST_QUEUE+=$1
+	shift
+done
+
+if ! bash build -d; then
+	echo "Build failed."
+	exit 1
+fi
+
+for TEST in $KSKY_TEST_QUEUE; do
+	if $KSKY_LAUNCH_DEBUGGER; then
+		lldb Build/Debug/Tests/$TEST.test
+	else
+		Build/Debug/Tests/$TEST.test
+	fi
+done

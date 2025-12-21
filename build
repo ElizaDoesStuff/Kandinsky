@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+KSKY_BUILD_PROFILE=Release
+KSKY_BUILD_SILENT=false
+KSKY_BUILD_VERBOSE=false
+
+while [ ! $1 = "" ]; do
+	case $1 in
+		-r | --release) KSKY_BUILD_PROFILE=Release;;
+		-d | --debug) KSKY_BUILD_PROFILE=Debug;;
+		-s | --silent) KSKY_BUILD_SILENT=true;;
+		-v | --verbose) KSKY_BUILD_VERBOSE=true;;
+		*) echo "[ERROR]: Unexpected argument '$1'" >&2
+	esac
+	shift
+done
+
+cd "$( dirname "$0" )"
+
+if [ ! -e Build ]; then
+	if ! $KSKY_BUILD_SILENT; then echo "Build directory has not been created yet; initializing."; fi
+	mkdir Build
+fi
+if [ ! -e Build/$KSKY_BUILD_PROFILE ]; then
+	if ! $KSKY_BUILD_SILENT; then 
+		echo "Build directory for profile '$KSKY_BUILD_PROFILE' has not been created yet; initializing."
+	fi
+
+	mkdir Build/$KSKY_BUILD_PROFILE
+
+	if [ $KSKY_BUILD_SILENT = true ]; then
+		cmake -B Build/$KSKY_BUILD_PROFILE -S . -G Ninja -DCMAKE_BUILD_TYPE=$KSKY_BUILD_PROFILE > /dev/null 2>&1
+	elif [ $KSKY_BUILD_VERBOSE = true ]; then
+		cmake -B Build/$KSKY_BUILD_PROFILE -S . -G Ninja -DCMAKE_BUILD_TYPE=$KSKY_BUILD_PROFILE
+	else
+		cmake -B Build/$KSKY_BUILD_PROFILE -S . -G Ninja -DCMAKE_BUILD_TYPE=$KSKY_BUILD_PROFILE > /dev/null
+	fi
+fi
+
+if ! $KSKY_BUILD_SILENT; then echo "Building profile '$KSKY_BUILD_PROFILE'..."; fi
+if $KSKY_BUILD_SILENT; then
+	cmake --build Build/$KSKY_BUILD_PROFILE > /dev/null 2>&1
+elif $KSKY_BUILD_VERBOSE; then
+	cmake --build Build/$KSKY_BUILD_PROFILE
+else
+	cmake --build Build/$KSKY_BUILD_PROFILE > /dev/null
+fi
+if ! $KSKY_BUILD_SILENT; then echo "Project built successfully!"; fi
