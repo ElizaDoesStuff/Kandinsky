@@ -9,7 +9,6 @@ while [ ! $1 = "" ]; do
 		-r | --release) KSKY_BUILD_PROFILE=Release;;
 		-d | --debug) KSKY_BUILD_PROFILE=Debug;;
 		-s | --silent) KSKY_BUILD_SILENT=true;;
-		-v | --verbose) KSKY_BUILD_VERBOSE=true;;
 		*) echo "[ERROR]: Unexpected argument '$1'" >&2
 	esac
 	shift
@@ -30,19 +29,15 @@ if [ ! -e Build/$KSKY_BUILD_PROFILE ]; then
 
 	if [ $KSKY_BUILD_SILENT = true ]; then
 		cmake -B Build/$KSKY_BUILD_PROFILE -S . -G Ninja -DCMAKE_BUILD_TYPE=$KSKY_BUILD_PROFILE > /dev/null 2>&1
-	elif [ $KSKY_BUILD_VERBOSE = true ]; then
-		cmake -B Build/$KSKY_BUILD_PROFILE -S . -G Ninja -DCMAKE_BUILD_TYPE=$KSKY_BUILD_PROFILE
 	else
-		cmake -B Build/$KSKY_BUILD_PROFILE -S . -G Ninja -DCMAKE_BUILD_TYPE=$KSKY_BUILD_PROFILE > /dev/null
+		cmake -B Build/$KSKY_BUILD_PROFILE -S . -G Ninja -DCMAKE_BUILD_TYPE=$KSKY_BUILD_PROFILE
 	fi
 fi
 
 if ! $KSKY_BUILD_SILENT; then echo "Building profile '$KSKY_BUILD_PROFILE'..."; fi
 if $KSKY_BUILD_SILENT; then
-	cmake --build Build/$KSKY_BUILD_PROFILE > /dev/null 2>&1
-elif $KSKY_BUILD_VERBOSE; then
-	cmake --build Build/$KSKY_BUILD_PROFILE
+	if ! cmake --build Build/$KSKY_BUILD_PROFILE > /dev/null 2>&1; then exit 1; fi
 else
-	cmake --build Build/$KSKY_BUILD_PROFILE > /dev/null
+	if ! cmake --build Build/$KSKY_BUILD_PROFILE; then exit 1; fi
 fi
 if ! $KSKY_BUILD_SILENT; then echo "Project built successfully!"; fi
