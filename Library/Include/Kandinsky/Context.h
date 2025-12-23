@@ -26,7 +26,7 @@ namespace KSKY {
 			//
 			// Status flags -- flags for error handling and important context info 
 			bool error = false;
-			bool ready = false;
+			bool valid = true;
 			//
 			// Message -- used to store error messages, info, etc.
 			std::string message = "";
@@ -44,6 +44,13 @@ namespace KSKY {
 			// "render" function -- performs draw calls, swaps window buffers, and handles events
 			void render();
 			//
+			// .--------------------------.
+			// |     Internal Methods     |
+			// '--------------------------'
+			// 
+			// "raise" function -- sets the error flag and (once events are implemented) triggers an error event
+			void __raise__( std::string );
+			//
 		private:
 			//
 			// .----------------------------.
@@ -51,14 +58,11 @@ namespace KSKY {
 			// '----------------------------'
 			//
 			// Bound objects -- pointers to objects that have been bound to the context
-			KSKY::Window* window;
+			KSKY::Window* window = nullptr;
 			//
 			// .-------------------------.
 			// |     Private Methods     |
 			// '-------------------------'
-			//
-			// "raise" function -- sets the error flag and (once events are implemented) triggers an error event
-			void raise( std::string );
 
 	};
 

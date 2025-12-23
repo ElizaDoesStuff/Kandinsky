@@ -33,7 +33,7 @@ int main() {
 
 	// ShaderManager.compile();
 	
-	while ( Context.ready ) Context.render();
+	while ( Context.valid ) Context.render();
 
 	if ( Context.error ) error( Context.message );
 

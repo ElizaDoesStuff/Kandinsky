@@ -24,8 +24,8 @@ namespace KSKY {
 			// |     Public Properties     |
 			// '---------------------------'
 			//
-			// window pointer -- a pointer to the internal glfw window object that the instance represents
-			GLFWwindow* __pointer__;
+			// bound flag -- denotes whether this window has been bound to a context yet
+			bool bound = false;
 			//
 			// .------------------------.
 			// |     Public Methods     |
@@ -34,8 +34,28 @@ namespace KSKY {
 			// Default constructor
 			Window();
 			//
-			// "bind" function -- an internal function that is automatically called when the window is bound to a parent context
+			// "bind" function -- an internal function that is automatically called when the window is bound
 			void __bind__( KSKY::Context* );
+			//
+			// Getter/Setter functions -- Modify or retrieve window attributes
+			KSKY::Window& title( std::string );
+			std::string title();
+			//
+//		internal:
+			//
+			// .-----------------------------.
+			// |     Internal Properties     |
+			// '-----------------------------'
+			//
+			// window pointer -- a pointer to the internal glfw window object that the instance represents
+			GLFWwindow* __pointer__ = nullptr;
+			// 
+			// cache -- a struct containing cached settings to be applied once the window is bound
+			struct Cache {
+
+				std::string title;
+
+			} __cache__;
 			//
 		private:
 			//
@@ -44,8 +64,7 @@ namespace KSKY {
 			// '----------------------------'
 			//
 			// context pointer -- a pointer to the parent context that this window is bound to, if any
-			KSKY::Context* context;
-
+			KSKY::Context* context = nullptr;
 	};
 
 }

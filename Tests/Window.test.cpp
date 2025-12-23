@@ -13,9 +13,15 @@ int main() {
 	KSKY::Context Context;
 	KSKY::Window Window;
 
+	Window
+		.title("Test Title 1")
+		.title("Test Title 2")
+		.title("Test Title 3");
+
 	Context.bind( &Window );
-	while ( Context.ready ) {
+	while ( Context.valid ) {
 		Context.render();
 	}
+	if ( Context.error ) error( Context.message );
 
 }
