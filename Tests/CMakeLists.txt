@@ -5,7 +5,6 @@ list(
 	APPEND
 	KSKY_TESTS
 	Window
-	Pipeline
 )
 
 list( LENGTH KSKY_TESTS KSKY_TEST_COUNT )

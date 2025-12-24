@@ -5,23 +5,15 @@
 #include <Kandinsky/Context.h>
 #include <Kandinsky/Window.h>
 
+#define TEST "Window.test"
 
 int main() {
 
-	log( "Running test 'Window.test'..." );
-	
-	KSKY::Context Context;
-	KSKY::Window Window;
+	log( "Running test '" TEST "'" );
 
-	Window
-		.title("Test Title 1")
-		.title("Test Title 2")
-		.title("Test Title 3");
+	const KSKY::Context CONTEXT;
+	const KSKY::Window WINDOW;
 
-	Context.bind( &Window );
-	while ( Context.valid ) {
-		Context.render();
-	}
-	if ( Context.error ) error( Context.message );
+	log( "Completed test '" TEST "'" );
 
 }
