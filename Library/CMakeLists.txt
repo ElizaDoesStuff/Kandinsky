@@ -4,8 +4,7 @@ project( Kandinsky.library )
 add_library(
 	${PROJECT_NAME}
 	STATIC
-	Source/Context.cpp
-	Source/Window.cpp
+	Source/Object.cpp
 )
 
 target_link_libraries( ${PROJECT_NAME} PUBLIC glad glfw )
