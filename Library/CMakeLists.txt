@@ -4,6 +4,7 @@ project( Kandinsky.library )
 add_library(
 	${PROJECT_NAME}
 	STATIC
+	Source/Context.cpp
 	Source/Object.cpp
 )
 
