@@ -5,6 +5,7 @@ list(
 	APPEND
 	KSKY_TESTS
 	Object
+	Window
 )
 
 list( LENGTH KSKY_TESTS KSKY_TEST_COUNT )
