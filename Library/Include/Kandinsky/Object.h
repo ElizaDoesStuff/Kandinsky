@@ -1,6 +1,8 @@
 #ifndef KSKY_OBJECT_H // Header
 #define KSKY_OBJECT_H // Guard
 
+#define KSKY_WINDOW_H // Do not include <Kandinsky/Window.h> (would cause unresolvable circular dependency)
+
 #include <Kandinsky/Context.h>
 
 namespace KSKY {
