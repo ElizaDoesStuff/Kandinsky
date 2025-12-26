@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-KSKY_BUILD_PROFILE=Release
+KSKY_BUILD_PROFILE=Debug
 KSKY_BUILD_SILENT=false
 KSKY_BUILD_VERBOSE=false
 
