@@ -13,7 +13,7 @@ if ( ${KSKY_TEST_COUNT} GREATER 0 )
 
 	foreach( TEST ${KSKY_TESTS} )
 		add_executable( ${TEST}.test test~${TEST}.cpp )
-		target_link_libraries( ${TEST}.test Kandinsky.library Prettiest )
+		target_link_libraries( ${TEST}.test Kandinsky.library Prettiest.library )
 	endforeach()
 
 endif()

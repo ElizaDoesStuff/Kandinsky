@@ -6,6 +6,7 @@ add_library(
 	STATIC
 	Source/Context.cpp
 	Source/Object.cpp
+	Source/Window.cpp
 )
 
 target_link_libraries( ${PROJECT_NAME} PUBLIC glad glfw )
